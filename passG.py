@@ -35,14 +35,16 @@ class PasswordGenerator:
             raise ValueError("Password length should be at least 8 characters.")
 
         characters = list(string.ascii_letters + string.digits + "!@#$%^&*()-_+=")
+        # for ensuring every pass has at least one lower case, one upper, one digit, and one special char
         password = [
             choice(string.ascii_lowercase),
             choice(string.ascii_uppercase),
             choice(string.digits),
             choice("!@#$%^&*()-_+="),
         ]
-
+        #  to fill the rest with random chars
         password += [choice(characters) for _ in range(length - 4)]
+        # final shuffle
         shuffle(password)
         return "".join(password)
 
@@ -142,28 +144,31 @@ class PasswordManager:
         if not self.passwords:
             print("No saved passwords.")
         else:
-            user_validation = input("Type 'yes' if you are sure you want to delete all the passwords? (you will never get them back!) : ")
+            user_validation = input(
+                "Type 'yes' if you are sure you want to delete all the passwords? (you will never get them back!) : "
+            )
             if user_validation.lower().strip() == "yes":
                 self.passwords = {}
                 self.save_passwords()
             logger.info(f"All passwords have been deleted")
             print(f"All passwords have been deleted successfully.")
 
-class MainApp:
+
+class Main:
     """The entry point for the password manager application."""
 
     @staticmethod
     def display_menu() -> None:
-        """Display the available commands to the user."""
+        """Displays the available commands to the user."""
         print(
             """
         Password Manager Commands:
-        1. add [prompt]      - Add a new password for a given prompt
-        2. delete [prompt]   - Delete the password for a given prompt
-        3. replace [prompt]  - Replace the password for a given prompt
-        4. show              - Show all saved passwords
-        5. delete all        - delete all saved passwords
-        6. exit              - Exit the application
+        add [prompt]      - Add a new password for the given prompt
+        delete [prompt]   - Delete the password for the given prompt
+        replace [prompt]  - Replaces the password for the given prompt
+        show              - Shows all saved passwords
+        delete all        - Deletes all saved passwords
+        exit              - Exit the application
         """
         )
 
@@ -173,7 +178,7 @@ class MainApp:
         manager = PasswordManager()
 
         while True:
-            MainApp.display_menu()
+            Main.display_menu()
             command = input("Enter a command: ").strip().lower()
 
             if command.startswith("add "):
@@ -197,4 +202,4 @@ class MainApp:
 
 
 if __name__ == "__main__":
-    MainApp.run()
+    Main.run()
