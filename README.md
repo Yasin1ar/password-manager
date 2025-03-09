@@ -6,7 +6,7 @@ A simple command-line-based password manager that generates strong, unique passw
 - **Strong Password Generation**: Generates 16-character long passwords using a mix of uppercase letters, lowercase letters, numbers, and special characters.
 - **Password Management**: Allows you to add, delete, and replace passwords associated with a specific prompt.
 - **File-Based Storage**: Saves passwords to a file (`passwords.txt`), allowing for easy persistence and retrieval.
-- **Logging**: Logs important actions (adding, deleting, replacing passwords) in `passG.log` for easier tracking.
+- **Logging**: Logs important actions (adding, deleting, replacing passwords) in `password_manager.log` for easier tracking.
 
 ## Requirements
 - Python 3.6 or higher
@@ -15,12 +15,12 @@ A simple command-line-based password manager that generates strong, unique passw
 
 1. Clone this repository or download the source files.
    ```bash
-   git clone https://github.com/Yasin1ar/passG
+   git clone https://github.com/Yasin1ar/password-manager
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd passG
+   cd password-manager
    ```
 
 3. Ensure that you have Python 3.6+ installed. You can check your Python version by running:
@@ -35,7 +35,7 @@ A simple command-line-based password manager that generates strong, unique passw
 To run the password manager, execute the following command:
 
 ```bash
-python passG.py
+python password_manager.py
 ```
 
 ### Available Commands
@@ -97,13 +97,13 @@ Password for 'facebook.com' has been deleted successfully.
 
 ## File Structure
 
-- **passG.py**: Main program file that contains the logic for password generation and management.
+- **password_manager.py**: Main program file that contains the logic for password generation and management.
 - **passwords.txt**: File where all generated passwords are stored (created automatically if it doesn't exist).
-- **passG.log**: Log file where all actions (adding, deleting, replacing) are logged.
+- **password_manager.log**: Log file where all actions (adding, deleting, replacing) are logged.
 
 ## Logging
 
-The application logs all significant events to a file (`passG.log`). Each time a password is added, deleted, or replaced, an entry is made in this log file. This helps track important operations and debug any issues.
+The application logs all significant events to a file (`password_manager.log`). Each time a password is added, deleted, or replaced, an entry is made in this log file. This helps track important operations and debug any issues.
 
 ## Security Considerations
 

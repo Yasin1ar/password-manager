@@ -4,7 +4,7 @@ import string
 from random import choice, shuffle
 
 # Constants
-LOG_FILE = "passG.log"
+LOG_FILE = "password_manager.log"
 PASSWORD_FILE = "passwords.txt"
 PASSWORD_LENGTH = 16
 
