@@ -1,121 +1,81 @@
 # Password Manager
 
-A simple command-line-based password manager that generates strong, unique passwords and stores them securely in a text file. The password manager allows users to add, delete, replace, and display stored passwords.
+Welcome to the **Password Manager**, a simple and secure tool to manage your passwords. This Python-based application allows you to add, delete, replace, and view passwords with ease. All passwords are stored locally in a file, and the application logs all actions for security and tracking purposes.
+
+---
 
 ## Features
-- **Strong Password Generation**: Generates 16-character long passwords using a mix of uppercase letters, lowercase letters, numbers, and special characters.
-- **Password Management**: Allows you to add, delete, and replace passwords associated with a specific prompt.
-- **File-Based Storage**: Saves passwords to a file (`passwords.txt`), allowing for easy persistence and retrieval.
-- **Logging**: Logs important actions (adding, deleting, replacing passwords) in `password_manager.log` for easier tracking.
 
-## Requirements
-- Python 3.6 or higher
+- **Add Passwords**: Generate and store a new password for a given prompt (e.g., a website or service name).
+- **Delete Passwords**: Remove a password associated with a specific prompt.
+- **Replace Passwords**: Replace an existing password with a new one.
+- **Show Passwords**: View all saved passwords.
+- **Delete All Passwords**: Clear all saved passwords (with user confirmation).
+- **Secure Password Generation**: Uses the `passg` library to generate strong, random passwords.
+- **Logging**: All actions are logged in a file (`password_manager.log`) for accountability.
 
-## Installation
+---
 
-1. Clone this repository or download the source files.
+## How to Use
+
+1. **Install Dependencies**: Ensure you have Python installed. Install the required library using pip:
+
    ```bash
-   git clone https://github.com/Yasin1ar/password-manager
+   pip install passg
    ```
 
-2. Navigate to the project directory:
+2. **Run the Application**: Execute the script to start the password manager:
+
    ```bash
-   cd password-manager
+   python password_manager.py
    ```
 
-3. Ensure that you have Python 3.6+ installed. You can check your Python version by running:
-   ```bash
-   python --version
-   ```
+3. **Follow the Menu**: Use the following commands to manage your passwords:
+   - `add [prompt]`: Add a new password for the given prompt.
+   - `delete [prompt]`: Delete the password for the given prompt.
+   - `replace [prompt]`: Replace the password for the given prompt.
+   - `show`: Display all saved passwords.
+   - `delete all`: Delete all saved passwords (requires confirmation).
+   - `exit`: Exit the application.
 
-(There are no external dependencies for this project, so no additional packages are required.)
-
-## Usage
-
-To run the password manager, execute the following command:
-
-```bash
-python password_manager.py
-```
-
-### Available Commands
-
-Once the program is running, you can use the following commands:
-
-1. **Add Password**: 
-   ```bash
-   add [prompt]
-   ```
-   Adds a new password associated with a given prompt (e.g., `add gmail.com`).
-
-2. **Delete Password**: 
-   ```bash
-   delete [prompt]
-   ```
-   Deletes the password associated with the given prompt (e.g., `delete gmail.com`).
-
-3. **Replace Password**: 
-   ```bash
-   replace [prompt]
-   ```
-   Replaces the existing password for the given prompt with a new one (e.g., `replace gmail.com`).
-
-4. **Show Passwords**:
-   ```bash
-   show
-   ```
-   Displays all saved passwords.
-
-5. **Delete all passwords**:
-   ```bash
-   delete all
-   ```
-   Deletes all saved passwords.
-6. **Exit**:
-   ```bash
-   exit
-   ```
-   Exits the password manager program.
-
-### Example
-
-```bash
-> add facebook.com
-Password for 'facebook.com' has been added successfully.
-
-> show
-Saved Passwords:
-----------------------------
-facebook.com: A1!bC2dE3@FgH4
-
-> replace facebook.com
-Password for 'facebook.com' has been replaced successfully.
-
-> delete facebook.com
-Password for 'facebook.com' has been deleted successfully.
-```
+---
 
 ## File Structure
 
-- **password_manager.py**: Main program file that contains the logic for password generation and management.
-- **passwords.txt**: File where all generated passwords are stored (created automatically if it doesn't exist).
-- **password_manager.log**: Log file where all actions (adding, deleting, replacing) are logged.
+- **`passwords.txt`**: Stores all saved passwords in the format `prompt: password`.
+- **`password_manager.log`**: Logs all actions performed by the user.
 
-## Logging
+---
 
-The application logs all significant events to a file (`password_manager.log`). Each time a password is added, deleted, or replaced, an entry is made in this log file. This helps track important operations and debug any issues.
+## Example Usage
 
-## Security Considerations
+```bash
+Password Manager Commands:
+add [prompt]      - Add a new password for the given prompt
+delete [prompt]   - Delete the password for the given prompt
+replace [prompt]  - Replaces the password for the given prompt
+show              - Shows all saved passwords
+delete all        - Deletes all saved passwords
+exit              - Exit the application
 
-- **Plain-text storage**: Passwords are stored in plain text in `passwords.txt`. For enhanced security, consider adding encryption for password storage.
-- **Local-only application**: This password manager is intended for local use. If you plan to use it in a more sensitive environment, consider additional security layers (encryption, password hashing, etc.).
+Enter a command: add email
+Password for 'email' has been added successfully.
+```
 
-## Future Enhancements
+---
 
-- **Encryption**: Encrypt passwords before storing them in the file for better security.
-- **Password Expiry**: Implement password expiry and notify users when a password needs to be updated.
-- **Search Functionality**: Add the ability to search for specific passwords by prompt.
+## Notes
+
+- **Security**: Passwords are stored in plaintext in `passwords.txt`. For enhanced security, consider encrypting the file or using a dedicated password manager.
+- **Logs**: The `password_manager.log` file records all actions, including additions, deletions, and replacements.
+- **Dependencies**: This application relies on the `passg` library for password generation. Make sure it is installed before running the script.
+
+---
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is open-source and available under the MIT License. Feel free to modify and distribute it as needed.
+
+---
+
+Thank you for using the **Password Manager**! If you have any questions or suggestions, please feel free to reach out. :)

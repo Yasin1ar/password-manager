@@ -1,12 +1,11 @@
 import os
 import logging
-import string
+from passg import generate_password
 from random import choice, shuffle
 
 # Constants
 LOG_FILE = "password_manager.log"
 PASSWORD_FILE = "passwords.txt"
-PASSWORD_LENGTH = 16
 
 # Logging setup
 logging.basicConfig(
@@ -15,39 +14,6 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
 logger = logging.getLogger()
-
-
-class PasswordGenerator:
-    """Responsible for generating strong passwords."""
-
-    @staticmethod
-    def generate_password(length: int = PASSWORD_LENGTH) -> str:
-        """
-        Generate a strong password consisting of letters, digits, and special characters.
-
-        Parameters:
-            length (int): Length of the password. Default is 16 characters.
-
-        Returns:
-            str: A strong password.
-        """
-        if length < 8:
-            raise ValueError("Password length should be at least 8 characters.")
-
-        characters = list(string.ascii_letters + string.digits + "!@#$%^&*()-_+=")
-        # for ensuring every pass has at least one lower case, one upper, one digit, and one special char
-        password = [
-            choice(string.ascii_lowercase),
-            choice(string.ascii_uppercase),
-            choice(string.digits),
-            choice("!@#$%^&*()-_+="),
-        ]
-        #  to fill the rest with random chars
-        password += [choice(characters) for _ in range(length - 4)]
-        # final shuffle
-        shuffle(password)
-        return "".join(password)
-
 
 class FileHandler:
     """Handles reading and writing passwords to/from the file."""
@@ -96,7 +62,7 @@ class PasswordManager:
             print(f"Error: '{prompt}' already exists. Use replace or delete instead.")
             return
 
-        password = PasswordGenerator.generate_password()
+        password = generate_password()
         self.passwords[prompt] = password
         self.save_passwords()
 
@@ -121,7 +87,7 @@ class PasswordManager:
             print(f"Error: '{prompt}' not found.")
             return
 
-        new_password = PasswordGenerator.generate_password()
+        new_password = generate_password()
         self.passwords[prompt] = new_password
         self.save_passwords()
 
